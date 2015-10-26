@@ -51,11 +51,11 @@ public class DFS
 		}
 	}
 
-	public void DFS(int i)
+	public void DepthSearch(int i)
 	{
 		int j;
 		//printf("\n%d",i);
-		System.out.print( i );
+		//System.out.print( i );
 		visited[i]=1;
 
 		for(j=0;j<n;j++)
@@ -65,7 +65,7 @@ public class DFS
 				if( charge > 0 || grid[ i ][ j ] == 1)
 				{
 					charge--;
-					DFS( j );
+					DepthSearch( j );
 				}
 			}
 		}

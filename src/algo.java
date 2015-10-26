@@ -4,7 +4,7 @@ public class algo
 	{
 		DFS searchTest = new DFS(10, 0.1);
 		searchTest.printGraph();
-		searchTest.DFS(0);
+		searchTest.DepthSearch(0);
 	}
 
 }
