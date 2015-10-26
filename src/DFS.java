@@ -7,6 +7,7 @@ public class DFS
 	private int stationProb;
 	private int n;
 	private int charge;
+	private String path;
 
 	public DFS(int vert, double charProb)
 	{
@@ -51,23 +52,42 @@ public class DFS
 		}
 	}
 
-	public void DepthSearch(int i)
+	public int DepthSearch(int up, int down, int left, int right, String path)
 	{
-		int j;
-		//printf("\n%d",i);
-		//System.out.print( i );
-		visited[i]=1;
+		//int j;
+		//visited[i]=1;
 
-		for(j=0;j<n;j++)
+		path = path+ down +","+ right +"  ";
+		if(down==0 && right==0)
 		{
-			if ( visited[ j ] == 0  )
-			{
-				if( charge > 0 || grid[ i ][ j ] == 1)
-				{
-					charge--;
-					DepthSearch( j );
-				}
-			}
+			//System.out.println(path);
+			return 1;
 		}
+
+		int counter = 0;
+
+		if(down==0)
+			counter = DepthSearch( 0, down, 0, right - 1, path );
+		else if(right==0)
+			counter = DepthSearch( 0, down - 1, 0, right, path );
+		else
+			counter = DepthSearch( 0, down, 0, right - 1, path ) + DepthSearch(0, down-1,0, right, path);
+
+		return counter;
+
+
+
+
+//		for(j=0;j<n;j++)
+//		{
+//			if ( visited[ j ] == 0  )
+//			{
+//				if( charge > 0 || grid[ i ][ j ] == 1)
+//				{
+//					charge--;
+//					DepthSearch( j );
+//				}
+//			}
+//		}
 	}
 }
